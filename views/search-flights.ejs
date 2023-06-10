@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- Materialize CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+  <!-- Materialize JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
+
+  <!-- Bootstrap Icons CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script src="/javascripts/project.js"></script>
+
+  <style>
+    .maincontainer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #273c75;
+      width: 100vw;
+      height: 100vh;
+      flex-direction: column;
+    }
+
+    .box {
+      background-color: rgba(255, 255, 255, 0.916);
+      width: 40%;
+      height: auto;
+      border-radius: 10px;
+      padding: 17px;
+    }
+
+    .c {
+      background-color: #FD8A8A;
+    }
+
+    .flex {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="maincontainer c">
+    
+    <div class="box">
+      <div>
+        <h4>Flight Interface:</h4>
+      </div>
+      <div class="row">
+        <form class="col s12 "action="/flight/flightdetails" method="post">
+          <div class="row flex">
+          </div>
+
+          <div class="row mt-1">
+            <div class="col-5">
+              <select class="form-select" aria-label="Default select example" id="source" name="source">
+                <option selected>Source</option>
+              </select>
+            </div>
+            <div class="col-md-1 d-flex justify-content-center align-items-center">
+              <i class="bi bi-arrow-left-right"></i>
+            </div>
+            <div class="col-5">
+              <select class="form-select" aria-label="Default select" id="destination" name="destination">
+                <option value="Destination" selected>Destination</option>
+              </select>
+            </div>
+
+          </div>
+
+          <div class="row mt-3">
+            <div class="col">
+              <label for="departureDate">Departure Date:</label>
+              <input type="text" class="datepicker" id="date" name="date">
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="col s3 d-flex  align-items-center">
+                           <button class="btn btn-primary col-auto c border-light"  type="submit" id="searchBtn">Search</button>  
+            </div>
+          </div>
+          
+
+
+        </form>
+      </div>
+      <div class="col-12 d-flex justify-content-center mt-4">
+        <h6 style="color: red;"> <%=message %></h6>
+       </div>
+    </div>
+
+  </div>
+
+  <!-- Materialize JavaScript Initialization -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var elems = document.querySelectorAll('.datepicker');
+      var options = {
+        format: 'dd-mm-yyyy',
+        autoClose: true
+      };
+      var instances = M.Datepicker.init(elems, options);
+    });
+  </script>
+
+  <script>
+    document.getElementById('searchBtn').addEventListener('click', function () {
+      var source = document.getElementById('source').value;
+      var destination = document.getElementById('destination').value;
+      var departureDate = document.getElementById('departureDate').value;
+
+      // Example code to log selected values
+      console.log('Source:', source);
+      console.log('Destination:', destination);
+      console.log('Departure Date:', departureDate);
+      // console.log('Return Date:', returnDate);
+    });
+  </script>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</html>
